@@ -22,7 +22,7 @@ const island = new Island(row, column)
 //여러 번 호출을 함수 자체는 여러번 콜해도 중복으로 안찍게 하였습니다만 이게 맞는지 모르겠습니다.
 for (let i = 1; i <= row * column; i++) {
 
-  let generateCnt = island.generateIsland(i)
+  const generateCnt = island.generateIsland(i)
 
   if (generateCnt != 0) {
 
