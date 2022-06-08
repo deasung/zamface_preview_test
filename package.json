@@ -17,5 +17,8 @@
     "url": "https://github.com/deasung/zamface_preview_test/issues"
   },
   "homepage": "https://github.com/deasung/zamface_preview_test#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^17.0.41"
+  }
 }
