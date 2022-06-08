@@ -19,13 +19,18 @@ const filePath = './test.txt';
 
 const island = new Island(row, column)
 
-let startNum:number = 0
-
 //여러 번 호출을 함수 자체는 여러번 콜해도 중복으로 안찍게 하였습니다만 이게 맞는지 모르겠습니다.
-while (startNum < row * column) {
+for (let i = 1; i <= row * column; i++) {
 
-  island.generateIsland(startNum)
-  startNum++
+  let generateCnt = island.generateIsland(i)
+
+  if (generateCnt != 0) {
+
+    console.log(`할당된 갯수:${generateCnt}`)
+
+  } else {
+    break
+  }
 
 }
 

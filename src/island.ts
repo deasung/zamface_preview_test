@@ -29,28 +29,34 @@ export class Island {
 
     let realCnt: number = 0
 
-    //점이 안찍혀 있는 인덱스 추출
-    this.grid.forEach(item => {
 
-      // console.log(item)
+    //점을 찍을 격자가 있는지 체크
+    if (this.arrayStrChkCount('') != 0) {
 
-      if (tempNum == 0) return
+      //점이 안찍혀 있는 인덱스 추출
+      this.grid.forEach(item => {
 
-      for (let i = 0; i < item.length; i++) {
+        // console.log(item)
 
-        if (item[i] == '') {
-          item[i] = '·'
-          tempNum--
-          realCnt++
+        if (tempNum == 0) return
 
-          if (tempNum == 0) return
+        for (let i = 0; i < item.length; i++) {
+
+          if (item[i] == '') {
+            item[i] = '·'
+            tempNum--
+            realCnt++
+
+            if (tempNum == 0) return
+          }
+
         }
 
-      }
+      });
 
-    });
+      // console.log(realCnt)
 
-    // console.log(this.grid)
+    }
 
     return realCnt
   }
@@ -62,23 +68,27 @@ export class Island {
 
     let deleteCnt: number = 0
 
-    this.grid.forEach(item => {
+    if (this.arrayStrChkCount('·') != 0) {
 
-      if (tempNum == 0) return
+      this.grid.forEach(item => {
 
-      for (let i = 0; i < item.length; i++) {
+        if (tempNum == 0) return
 
-        if (item[i] == '·') {
-          item[i] = ''
-          tempNum--
-          deleteCnt++
+        for (let i = 0; i < item.length; i++) {
 
-          if (tempNum == 0) return
+          if (item[i] == '·') {
+            item[i] = ''
+            tempNum--
+            deleteCnt++
+
+            if (tempNum == 0) return
+          }
+
         }
 
-      }
+      });
 
-    });
+    }
 
     return deleteCnt
 
@@ -109,6 +119,22 @@ export class Island {
       console.log(err);
       return '파일을 읽는데에 실패하였습니다.'
     }
+  }
+
+
+  private arrayStrChkCount(checkStr:string):number {
+
+    let chkCount = this.grid.filter(function(arr) {
+      // check length of date formated elements
+      return arr.filter(function(str) {
+        return str == checkStr
+      }).length;
+    }).length;
+
+    // console.log(`test:${chkCount}`)
+
+    return chkCount
+
   }
 
 }
